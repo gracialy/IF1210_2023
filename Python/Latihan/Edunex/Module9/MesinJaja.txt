@@ -1,0 +1,46 @@
+Program MesinJaja
+Spesifikasi Program:
+
+KAMUS
+    type tray: <nomor: integer, harga: integer, jumlah: integer
+    type arrayTray: array [1..n] of tray
+
+    n, i, beli: integer
+
+function dataTray (nomor: integer) -> tray
+KAMUS LOKAL
+    harga, jumlah: integer
+ALGORITMA
+    repeat {validasi harga}
+        harga <- input()
+    until (harga≥5000) and (harga≤20000) and (harga%5000=0)
+
+    repeat {validasi jumlah}
+        jumlah <- input()
+    until (jumlah≥0) and (harga≤10)
+
+    -> (nomor, harga, jumlah)
+
+
+
+ALGORITMA PROGRAM UTAMA
+{MODUS Loading}
+repeat
+    n <- input()
+until n≥1 and n≤40
+
+i traversal [1..n]
+    arrayTray(i) = dataTray(i)
+
+{MODUS Operation}
+jumlahMinuman=0
+i traversal [1..n]
+    jumlahMinuman = jumlahMinuman + arrayTray [i][3]
+
+repeat 
+    beli <- input()
+
+    if arrayTray (beli) [1] > 0 then 
+        arrayTray (beli) [3] <- arrayTray (beli) [3] - 1
+        
+until (jumlahMinuman=0)

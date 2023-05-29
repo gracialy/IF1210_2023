@@ -1,0 +1,28 @@
+program CetakKuadrat
+{Input: masukan integer dan mencetak nilai kuadratnya ke layar}
+
+KAMUS
+    bil: integer
+    function Kuadrat (x: integer) -> integer
+    {menghasilkan kuadrat x}
+    procedure CetakInt (input x: integer)
+    {I.S. x terdefinisi; F.S. x tercetak ke layar}
+
+
+ALGORITMA PROGRAM UTAMA
+    input(bil)  {baca dari keyboard}
+    CetakInt (Kuadrat(bil))
+
+
+{REALISASI FUNGSI/PROSEDUR}
+function Kuadrat (x: integer) -> integer
+{menghasilkan kuadrat x}
+KAMUS LOKAL
+ALGORITMA
+    -> x*x
+
+procedure CetakInt (input x: integer)
+{I.S. x terdefinisi; F.S. x tercetak ke layar}
+KAMUS LOKAL
+ALGORITMA
+    -> output(x)

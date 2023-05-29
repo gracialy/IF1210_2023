@@ -1,0 +1,62 @@
+Program SegiEmpat
+Spesifikasi Program: program menerima masukan 2 buah SegiEmpat, 
+    selanjutnya program akan membandingkan nilai luas
+
+KAMUS
+    type Titik: <x: integer, y: integer>
+    type SegiEmpat: <TAwal: Titik, TAkhir: Titik>
+    S1, S2: SegiEmpat
+
+function inTitik () -> Titik
+{menghasilkan Titik}
+KAMUS LOKAL
+    x, y: integer
+ALGORITMA
+    x <- input()
+    y <- input()
+    -> (x,y)
+
+function validasi (tAwal, tAkhir: Titik) -> Boolean
+{mengembalikan status validasi Titik}
+KAMUS LOKAL
+ALGORITMA
+    depend on
+        (TAwal[0]<0 and TAkhir[0]>0) or (TAwal[0]>0 and TAkhir[0]<0):
+            depend on
+                (TAwal[1]<0 and TAkhir[1]>0) or (TAwal[1]>0 and TAkhir[1]<0): True
+            else: False
+    else: False
+
+function segiEmpat () -> SegiEmpat
+{menghasilkan SegiEmpat yang valid}
+KAMUS LOKAL
+    TAwal, TAkhir: Titik
+ALGORITMA
+    repeat {validasi}
+        TAwal <- inTitik()
+        TAkhir <- inTitik()
+    until (not (validasi (TAwal, TAkhir))) and 
+    -> (TAwal, TAkhir)
+
+function absolut (x: integer): integer
+{mengembalikan absolut}
+KAMUS LOKAL
+ALGORITMA
+    if (x<0) then
+        -> (-1)*x
+    else 
+        -> x
+
+function luas (S1,S2: SegiEmpat) -> integer
+KAMUS LOKAL
+ALGORITMA
+    -> absolut(S1[1]*S1[2])-absolut(S2[1],S2[2])            
+
+# ALGORITMA PROGRAM UTAMA
+S1 <- segiEmpat ()
+S2 <- segiEmpat ()
+
+depend on
+    luas (S1,S2) >0: output("SegiEmpat pertama lebih luas daripada SegiEmpat kedua")
+    luas (S1,S2) =0: output("Luas SegiEmpat sama")
+    luas (S1,S2) <0: output("SegiEmpat kedua lebih luas daripada SegiEmpat pertama") 
